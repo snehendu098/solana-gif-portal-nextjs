@@ -1,0 +1,111 @@
+{
+  "version": "0.1.0",
+  "name": "solanabackend",
+  "instructions": [
+    {
+      "name": "startStuffOff",
+      "accounts": [
+        {
+          "name": "baseAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "addGif",
+      "accounts": [
+        {
+          "name": "baseAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "gifLink",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "likeGif",
+      "accounts": [
+        {
+          "name": "baseAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "gif",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "BaseAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "totalGifs",
+            "type": "u64"
+          },
+          {
+            "name": "gifLinks",
+            "type": {
+              "vec": {
+                "defined": "GifHolder"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "GifHolder",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "gifLink",
+            "type": "string"
+          },
+          {
+            "name": "userAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "likes",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "address": "5rDjK9k6sEdo658cSyvPKPp2NyED9Tzy1deoVewJh8Ti"
+  }
+}
